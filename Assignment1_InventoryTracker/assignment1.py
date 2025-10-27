@@ -1,7 +1,7 @@
-# ---------------- Inventory Tracker Assignment ----------------
-# Ye ek simple console-based inventory management system hai
-# Jisme hum products ko list, add, update, delete kar sakte hain
-# Saath hi low stock aur discount items bhi check karte hain
+
+# Simple console base inventry management project 
+# where we can  list, add, update, delete the products 
+# even check low stock nd discount items 
 
 # Product list (initial data)
 products = [
@@ -12,17 +12,15 @@ products = [
 # Constant - low stock limit
 LOW_STOCK = 5
 
-# ---------------------------------------------
+
 # Function 1: List all products
-# ---------------------------------------------
 def list_products():
     # Har product ko ek readable format me print karta hai
     for p in products:
         print(f"{p['name']} | Stock: {p['stock']} | Price: {p['price']} | Location: {p['location']} | Tags: {p['tags']}")
 
-# ---------------------------------------------
+
 # Function 2: Low Stock Warning
-# ---------------------------------------------
 def low_stock_warning():
     # Sirf un items ko print karta hai jinka stock LOW_STOCK limit se kam hai
     print("\nLow Stock Items:")
@@ -30,9 +28,7 @@ def low_stock_warning():
         if p['stock'] < LOW_STOCK:
             print(f"{p['name']} (Stock: {p['stock']})")
 
-# ---------------------------------------------
 # Function 3: Add a new product
-# ---------------------------------------------
 def add_product():
     # User se product details leke products list me add karta hai
     name = input("Enter product name: ")
@@ -43,9 +39,7 @@ def add_product():
     products.append({"name": name, "stock": stock, "price": price, "location": location, "tags": tags})
     print("Product added successfully!")
 
-# ---------------------------------------------
 # Function 4: Update stock of an existing product
-# ---------------------------------------------
 def update_stock():
     name = input("Enter product name to update: ")
     for p in products:
@@ -55,9 +49,7 @@ def update_stock():
             return
     print("Product not found!")
 
-# ---------------------------------------------
 # Function 5: Delete a product
-# ---------------------------------------------
 def delete_product():
     name = input("Enter product name to delete: ")
     for p in products:
@@ -67,17 +59,13 @@ def delete_product():
             return
     print("Product not found!")
 
-# ---------------------------------------------
 # Function 6: Calculate total inventory value
-# ---------------------------------------------
 def total_value():
     # Formula: total = sum of (stock * price) for all products
     total = sum(p["stock"] * p["price"] for p in products)
     print(f"Total Inventory Value: ₹{total}")
 
-# ---------------------------------------------
 # Function 7: Apply discount to clearance items
-# ---------------------------------------------
 def apply_discount():
     # Sirf un items par 50% discount lagata hai jinme tag me 'clearance' hai
     print("\nDiscounted Clearance Items:")
@@ -86,9 +74,7 @@ def apply_discount():
             new_price = p["price"] * 0.5
             print(f"{p['name']} | Old Price: ₹{p['price']} | New Price: ₹{new_price}")
 
-# ---------------------------------------------
-# Function 8: Main menu loop
-# ---------------------------------------------
+# Function 8: Main menu 
 def main():
     while True:
         # User menu display karta hai
