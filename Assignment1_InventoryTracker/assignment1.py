@@ -38,7 +38,7 @@ def add_product():
     location = input("Enter location: ")
     tags = set(input("Enter tags (comma separated): ").split(","))
     products.append({"name": name, "stock": stock, "price": price, "location": location, "tags": tags})
-    print("Product added successfully!")
+    print("Product added successfully!!")
 
 
 # Function 4: Update the stock of an existing product
