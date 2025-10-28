@@ -1,49 +1,44 @@
-# Main file that displays menu and handles user interaction
+# Main file that provides the menu and calls service functions
 
 from service.inventory_service import InventoryService
 
-inventory = InventoryService()
+def main():
+    inventory = InventoryService()
 
-while True:
-    print("\n==== Inventory Menu ====")
-    print("1. Add Normal Product")
-    print("2. Add Food Product")
-    print("3. Update Product")
-    print("4. Delete Product")
-    print("5. Display All Products")
-    print("6. Exit")
+    while True:
+        print("""
+        ==== INVENTORY MANAGEMENT MENU ====
+        1. Add Product
+        2. List All Products
+        3. Low Stock Warnings
+        4. Update Stock
+        5. Delete Product
+        6. Total Inventory Value
+        7. Apply Discount by Tag (clearance)
+        8. Exit
+        """)
 
-    choice = input("Enter your choice: ")
+        choice = input("Enter your choice: ")
 
-    if choice == "1":
-        name = input("Enter Product Name: ")
-        price = float(input("Enter Price: "))
-        quantity = int(input("Enter Quantity: "))
-        inventory.add_product(name, price, quantity)
+        if choice == '1':
+            inventory.add_product()
+        elif choice == '2':
+            inventory.view_products()
+        elif choice == '3':
+            inventory.low_stock_products()
+        elif choice == '4':
+            inventory.update_stock()
+        elif choice == '5':
+            inventory.delete_product()
+        elif choice == '6':
+            inventory.total_inventory_value()
+        elif choice == '7':
+            inventory.discount_by_tag()
+        elif choice == '8':
+            print("Exiting... Thank you!")
+            break
+        else:
+            print("Invalid choice! Please try again.\n")
 
-    elif choice == "2":
-        name = input("Enter Food Product Name: ")
-        price = float(input("Enter Price: "))
-        quantity = int(input("Enter Quantity: "))
-        expiry = input("Enter Expiry Date (YYYY-MM-DD): ")
-        inventory.add_product(name, price, quantity, is_food=True, expiry_date=expiry)
-
-    elif choice == "3":
-        name = input("Enter Product Name to Update: ")
-        price = float(input("Enter New Price: "))
-        quantity = int(input("Enter New Quantity: "))
-        inventory.update_product(name, price, quantity)
-
-    elif choice == "4":
-        name = input("Enter Product Name to Delete: ")
-        inventory.remove_product(name)
-
-    elif choice == "5":
-        inventory.display_all_products()
-
-    elif choice == "6":
-        print("👋 Exiting... Goodbye!")
-        break
-
-    else:
-        print("⚠️ Invalid choice! Try again.")
+if __name__ == "__main__":
+    main()
