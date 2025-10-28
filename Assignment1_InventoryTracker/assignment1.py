@@ -5,7 +5,8 @@
 # Product list (initial data)
 products = [
     {"name": "Milk", "stock": 10, "price": 40, "location": "shelf-1", "tags": {"grocery"}},
-    {"name": "Bread", "stock": 3, "price": 30, "location": "shelf-2", "tags": {"grocery", "clearance"}}
+    {"name": "Buiscuit", "stock": 9, "price": 30, "location": "shelf-2", "tags": {"clearance"}},
+    {"name": "Bread", "stock": 3, "price": 30, "location": "shelf-2", "tags": {"grocery", "clearance"}}   
 ]
 
 # Constant – defines the low stock limit
@@ -59,9 +60,9 @@ def delete_product():
             products.remove(p)
             print("Product deleted!")
             return
-    print("Product not found!")
-
-
+        else:
+            print("Product not found!")
+            
 # Function 6: Calculate the total inventory value
 def total_value():
     # Formula: total = sum of (stock * price) for all products
@@ -83,7 +84,7 @@ def apply_discount():
 def main():
     while True:
         # Displays the user menu for performing operations
-        print("\n1. List Products\n2. Low Stock\n3. Add Product\n4. Update Stock\n5. Delete Product\n6. Total Value\n7. Apply Discount\n8. Exit")
+        print("\n1. List Products\n2. Low Stock\n3. Add Product\n4. Update Stock\n5. Delete Product\n6. Total Value\n7. Show discount item and valuew\n8. Exit")
         choice = input("Enter choice: ")
 
         # Calls the respective function based on the user's choice
